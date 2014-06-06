@@ -78,6 +78,10 @@ body.media-disable a.media-off {
     display: inline;
 }
 
+body.alex {
+    background-image: url('/images/background-alex.png');
+}
+
 body.fixed {
     background-image: url('/images/background-dark.png');
     overflow: hidden;
@@ -655,6 +659,7 @@ ol.messages #paginated.loading {
 
 #overlay li p iframe, #overlay li p video, #overlay li p audio, #overlay li p object {
     height: 306px;
+  height: 290px;
     margin: 2px 0;
     width: 645px;
 }
@@ -1161,6 +1166,7 @@ time:hover {
     margin: 7px 8px 0 0;
 }
 
+.high-contrast .actions > a.on,
 .actions.no-touch > a:hover,
 .actions > a.on {
     opacity: 1.0;
@@ -1176,7 +1182,7 @@ time:hover {
     cursor: pointer;
     float: left;
     height: 23px;
-    opacity: 0.1;
+    opacity: 0.2;
     padding: 0;
     position: relative;
     width: 23px;
@@ -1311,9 +1317,11 @@ ol.messages > li p .image-wrapper:first-child, ol.messages > li p .object-wrappe
     margin: 5px 0;
 }
 
+ol.messages > li p iframe, /*?*/
 ol.messages > li p img {
     max-height: 535px;
     max-width: 525px;
+    max-width: 640px;
 }
 
 ol.messages > li,
@@ -1435,6 +1443,11 @@ img.hush {
     width: 80px;
 }
 
+#message-summary .avatar.writers {
+  position: absolute;
+    width: 20px;
+}
+
 #message-summary a {
     display: block;
 }
@@ -1520,6 +1533,10 @@ img.hush {
     body {
         background-image: url('/images/background2x.png');
         background-size: auto 200px;
+    }
+
+    body.alex {
+        background-image: url('/images/background-alex2x.png');
     }
 
     body.fixed {

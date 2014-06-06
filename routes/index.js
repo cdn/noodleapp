@@ -7,7 +7,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
   var userDb = require('../lib/user');
   var charLimit = 256;
 
-  var FOLLOWING_MAX = 300;
+  var FOLLOWING_MAX = 200;
 
   app.get('/', function(req, res) {
     var analytics = false;
@@ -23,7 +23,19 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
         }
       });
 
+//      appnet.blocked
+
+      appnet.muted(req, function(err, users) {
+        if (users) {
+          users.data.forEach(function(user) {
+            userDb.mutant(utils.getUser(req).id, user.username, client);
+          });
+        }
+      });
+
+
       var mediaOn = '';
+      var darkerTheme = '';
       var highContrast = '';
 
       userDb.getSettings(req, client, function(err, userItems) {
@@ -38,6 +50,10 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
 
           if (userItems.highContrast === 'true') {
             highContrast = 'high-contrast';
+          }
+
+          if (userItems.darkerTheme === 'true') {
+            darkerTheme = 'alex';
           }
 
           if (userItems.charLimit === 'true') {
@@ -59,6 +75,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
             loggedInId: utils.getUserId(req),
             username: utils.getUser(req).username,
             mediaOn: mediaOn,
+	    darkerTheme: darkerTheme,
             highContrast: highContrast,
             charLimit: charLimit,
             loggedUsername: utils.getUser(req).username,
@@ -74,6 +91,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
         loggedInId: '',
         username: '',
         mediaOn: '',
+        darkerTheme: '',
         highContrast: '',
         charLimit: charLimit,
         loggedUsername: '',
@@ -104,6 +122,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
           }
 
           var mediaOn = '';
+          var darkerTheme = '';
           var highContrast = '';
 
           userDb.getSettings(req, client, function(err, userItems) {
@@ -113,6 +132,10 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
             } else {
               if (userItems.mediaOn === 'false') {
                 mediaOn = 'media-disable';
+              }
+
+              if (userItems.darkerTheme === 'true') {
+                darkerTheme = 'alex';
               }
 
               if (userItems.highContrast === 'true') {
@@ -140,6 +163,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
               description: description,
               loggedInId: utils.getUserId(req),
               mediaOn: mediaOn,
+	      darkerTheme: darkerTheme,
               highContrast: highContrast,
               charLimit: charLimit,
               loggedUsername: utils.getUser(req).username,
@@ -259,6 +283,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
     });
   });
 
+// explore stream(s)
   app.get('/global/feed', isLoggedIn, function(req, res) {
     req.session.url = '/global/feed';
 
@@ -515,6 +540,18 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
     });
   });
 
+  app.get('/my/mutants', isLoggedIn, function(req, res) {
+    var userId = utils.getUser(req).id;
+    userDb.mutants(userId, client, function(err, usernames) {
+      if (err) {
+        res.status(500);
+        res.json({ 'error': 'error retrieving mutants' });
+      } else {
+        res.json({ usernames: usernames });
+      }
+    });
+  });
+
   app.get('/messages', isLoggedIn, function(req, res) {
     var analytics = false;
 
@@ -528,10 +565,15 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
             res.redirect('/500');
           } else {
             var mediaOn = '';
+            var darkerTheme = '';
             var highContrast = '';
 
             if (userItems.mediaOn === 'false') {
               mediaOn = 'media-disable';
+            }
+
+            if (userItems.darkerTheme === 'true') {
+              darkerTheme = 'alex';
             }
 
             if (userItems.highContrast === 'true') {
@@ -557,6 +599,7 @@ module.exports = function(app, client, isLoggedIn, noodle, config) {
             url: '/channels',
             loggedInId: utils.getUserId(req),
             mediaOn: mediaOn,
+	    darkerTheme: darkerTheme,
             highContrast: highContrast,
             charLimit: charLimit,
             loggedUsername: utils.getUser(req).username,

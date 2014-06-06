@@ -249,7 +249,7 @@ define(['jquery', 'version-timeout', 'friends', 'jquery.caret'],
             message = setMessageMetadata(data.messages[i], message);
 
             if (showDetails) {
-              message.find('p').append('<span class="source">Posted from <a href="' + data.messages[i].appSourceUrl + '">' + data.messages[i].appSource + '</a></span>');
+              message.find('p').append('<span class="source">Posted from ' + data.messages[i].appSource + '</span>');
               if (data.messages[i].crosspost !== '') {
                 var cpurl = data.messages[i].crosspost.split('//')
                 cpurl = cpurl[1].split('/')
@@ -323,7 +323,6 @@ define(['jquery', 'version-timeout', 'friends', 'jquery.caret'],
         unreadMessagesNest.find('> li:gt(' + MESSAGE_LIMIT + ')').remove();
       } else {
         messages.prepend(message);
-	//TODO retain scroll position
       }
     }
     beforeId = null;
@@ -648,7 +647,7 @@ define(['jquery', 'version-timeout', 'friends', 'jquery.caret'],
     notifications
       .removeClass('on')
       .text(0);
-    document.title = 'NoodleApp';
+    document.title = 'Pastapp';
     self.resetUnread();
   };
 

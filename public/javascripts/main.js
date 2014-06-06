@@ -66,7 +66,7 @@ define(['jquery', 'appnet', 'friends', 'jquery.caret'],
     notificationIcon
       .removeClass('on')
       .text(0);
-    document.title = 'NoodleApp';
+    document.title = 'Pastapp';
     appnet.resetUnread();
   };
 
