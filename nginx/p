@@ -1,0 +1,44 @@
+# p
+
+#pastapp.net
+
+#pastapp.net
+server {
+
+#       listen 80 default_server;
+#       listen [::]:80 default_server ipv6only=on;
+
+        listen 80;
+        listen [::]:80 ipv6only=on;
+
+	server_name pastapp.net;
+
+        return 301 https://pastapp.net$request_uri;
+
+}
+
+#pastapp.net
+server {
+
+#       listen 80;
+#       listen [::]:80 ipv6only=on;
+
+        listen 443 ssl;
+#       listen [::]:443 ipv6only=on ssl;
+	ssl_certificate_key	/path/to/pastapp.net.key;
+	ssl_certificate		/path/to/pastapp.chain.crt;
+
+	ssl_session_timeout 5m;
+
+	ssl_protocols SSLv3 TLSv1;
+	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+	ssl_prefer_server_ciphers on;
+
+	server_name pastapp.net;
+
+	location / {
+	  access_log off;
+	  proxy_pass http://127.0.0.1:3000;
+	}
+
+}
