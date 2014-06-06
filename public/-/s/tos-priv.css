@@ -1,0 +1,30 @@
+ol{list-style: none;margin:0;padding:0}.c0{padding-top:14pt;text-indent:22pt;direction:ltr;margin-left:-22pt;padding-bottom:4pt}.c3{padding-top:18pt;text-indent:22pt;direction:ltr;margin-left:-22pt;padding-bottom:4pt}.c9{margin:0 0 1em;padding:0}
+/*body*/.c11{max-width:468pt;background-color:#fff;
+background: hsla(0,100%,100%, .78);
+margin: 36pt; padding:36pt}
+.c1{/*text-indent:-18pt;*/direction:ltr;margin-left:18pt;text-indent:-1.2em}.c12{/*padding-top:24pt;*/padding-bottom:6pt}.c5{height:11pt;direction:ltr}.c6{direction:ltr}.c4{font-size:18pt}.c7{font-weight:bold}.c2{color:#333333}
+/*.c10{font-size:21pt}.c8{font-size:14pt}*/
+li,p{color:#000;font-size:11pt;font-family:"Helvetica Neue","Arial",sans-serif}p{margin:0 0 1em}
+h1,h2,h3,h4,h5,h6{line-height:1.15;text-align:left;font-family:"Trebuchet MS", sans-serif;font-family: Georgia, "Times New Roman", serif;padding-bottom:0}
+h1,h2{color:#000;padding-top:10pt}h1{font-size:16pt}h2{font-size:13pt;font-weight:bold}h3,h4,h5,h6{font-size:11pt;padding-top:8pt;color:#666666}h3{font-size:12pt;font-weight:bold}h4{text-decoration:underline}h5{}
+h6{font-style:italic}:empty{background:red}
+
+html {
+/*https://files.app.net/mwgfJU-F | */
+background: fixed no-repeat url(https://files.app.net/1/83303/aSGNeLo9twbMHBTEFPBZthP4ROGwUm1O-FFmlT3LXFPFzeTBulhJDlYz3GAAvu5Rhdcxr6O8efrcQ4B212abB1OKCdkSHv_hUMH_34inRM52_fkpSNRb3Uh4U-_pVV9JhjjGjxGeaHpqvN_sSK3zsJpxYQU_qXfqxeUPPGZopQh7rjfcIF7gwrXsQguJbarpT);
+/**/
+background-size: /*constrain*/ 100% auto /*100vh;*/ /*auto*/ /*cover*/
+/*position: fixed*/
+}
+
+/* portrait device : background-size: auto 100% */
+@media only screen and (orientation: portrait) {
+html{background-size: auto 100vh /*%*/} /*some webkit issues like 'fixed'*/
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and
+ (min--moz-device-pixel-ratio:1.5),only screen and
+ (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5){
+html{/*@2x*/
+/*https://files.app.net/mwg9VcbX | https://files.app.net/1/83302/a5drHELCOwQ3MSCKDwPfFv14fLmQC4K-unyBXVtSef-6B54OigQp5pKEiJx1vB0timAFZS0N3RhqBjAxxwFI3iNCrlpM7fKpBtQYe3jBdRTdC4adQ5gq5ChFnJ4EY7xUcv3h-dKfbvF7oggBkHH3ALSgr-YnLmJbEPI9GSwy2vv6PchYplGI0ZgGBKdP14d4u*/
+}

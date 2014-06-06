@@ -1,0 +1,16 @@
+{
+  "version": "0.3.4.1",
+  "name": "Pastapp",
+  "default_locale": "en-GB",
+  "icons": {
+    "72": "/images/logo-72.png",
+    "114": "/images/logo-114.png",
+    "128": "/images/logo-128.png"
+  },
+  "description": "A web client for app.net",
+  "launch_path": "/",
+  "developer": {
+    "url": "https://pastapp.net",
+    "name": "Chris Neale; Edna Piranha and friends"
+  }
+}
